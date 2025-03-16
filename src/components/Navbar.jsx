@@ -2,7 +2,7 @@ import useUiStore from "../stores/UiStore";
 
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LuSearch, LuShoppingCart, LuStar, LuUserRound } from "react-icons/lu";
+import { LuSearch, LuStar, LuUserRound } from "react-icons/lu";
 
 import { NavLink } from "react-router-dom";
 import MobileMenu from "./MobileMenu";

@@ -21,8 +21,6 @@ export default function Approutes() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<Checkout />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="men" element={<Men />} />
         <Route path="women" element={<Women />} />
@@ -32,6 +30,8 @@ export default function Approutes() {
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
       </Route>

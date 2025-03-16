@@ -60,7 +60,7 @@ export default function MobileMenu() {
     <>
       <div
         className={`${
-          isMobileMenuOpen ? `block opacity-100` : `hidden opactiy0`
+          isMobileMenuOpen ? `block opacity-100` : `hidden opactiy-0`
         } fixed inset-0 z-[99] bg-black/70  md:hidden`}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>
