@@ -1,11 +1,16 @@
-import img1 from "../assets/1.png";
-import img2 from "../assets/2.png";
-import img4 from "../assets/4.png";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+
+import img1 from "../assets/heroImages/1.png";
+import img2 from "../assets/heroImages/2.png";
+import img4 from "../assets/heroImages/4.png";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
   return (
-    <section className="container px-10 py-4">
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-4">
+    <section className="container  py-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2 md:gap-4">
         <div className="flex w-full  bg-stone-200 row-span-4 py-2 rounded-lg  items-end justify-center">
           <img src={img1} className="w-[280px] md:w-[auto]" />
         </div>
@@ -24,9 +29,7 @@ export default function HeroSection() {
             <h2 className="text-base uppercase font-medium hidden md:block">
               New Collection
             </h2>
-            <button className="bg-black text-stone-100 font-semibold text-sm  px-8 py-4 md:px-6 rounded-lg mt-2">
-              SHOP NOW
-            </button>
+            <Button onClick={() => navigate(`/shop`)}>SHOP NOW</Button>
           </div>
         </div>
         <div className=" row-span-1 rounded-lg hidden md:flex  flex-col justify-end">

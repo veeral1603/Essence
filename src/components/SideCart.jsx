@@ -164,9 +164,23 @@ export default function SideCart() {
 
   useEffect(() => {
     if (isSideCartOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+
+      // Apply fixed positioning
       document.body.style.position = "fixed";
-    } else {
-      document.body.style.position = "";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%"; // Prevent horizontal shift
+
+      return () => {
+        // Restore scroll position
+        const savedScrollY = Math.abs(
+          parseInt(document.body.style.top || "0", 10)
+        );
+        document.body.style.position = "";
+        document.body.style.top = "";
+        window.scrollTo(0, savedScrollY);
+      };
     }
   }, [isSideCartOpen]);
 

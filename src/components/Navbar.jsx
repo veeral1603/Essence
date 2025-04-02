@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
-  { label: "Home", path: "/" },
   { label: "Men", path: "/men" },
   { label: "Women", path: "/women" },
   { label: "Shop", path: "/shop" },
@@ -34,7 +33,7 @@ export default function Navbar() {
             {navLinks.map((item) => {
               {
                 return (
-                  <li className="py-1 px-2 font-medium">
+                  <li className="py-1 px-2 font-normal">
                     <NavLink to={item.path}>{item.label}</NavLink>
                   </li>
                 );
