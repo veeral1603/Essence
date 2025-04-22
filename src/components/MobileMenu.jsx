@@ -99,18 +99,22 @@ export default function MobileMenu() {
           </div>
         </div>
 
-        <div className="px-4 sm:px-6 pt-4 pb-2 sm:pt-5 sm:pb-2 flex items-center justify-between ">
+        <div className="px-4 sm:px-6 pt-3 pb-1 sm:pt-4 sm:pb-1 flex items-center justify-between ">
           <div className="flex items-center justify-between gap-2 sm:gap-4">
             <div className="overflow-hidden rounded-full">
-              <img src={profilePlaceholder} className="w-[50px] sm:w-[60px]" />
+              <img src={profilePlaceholder} className="w-[40px] sm:w-[50px]" />
             </div>
 
-            <p className="font-medium text-sm/4 text-black">
+            <p className="font-medium text-xs/4 sm:text-sm/4 text-black">
               Hey There, <br /> <span className="font-semibold">Guest!</span>
             </p>
           </div>
 
-          <NavLink className="text-sm sm:text-sm text-blue-500" to={`/login`}>
+          <NavLink
+            className="text-sm sm:text-sm text-blue-500"
+            to={`/login`}
+            onClick={toggleIsMobileMenuOpen}
+          >
             Login/Signup
           </NavLink>
         </div>

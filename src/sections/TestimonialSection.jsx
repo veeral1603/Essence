@@ -52,10 +52,10 @@ export default function TestimonialSection() {
         </div>
 
         <div className="flex items-center gap-4 mt-6 mb-2 md:mt-6 md:mb-0">
-          <button className="bg-white rounded-full h-10 w-10 md:w-14 md:h-14 shadow-sm md:hover:shadow-md transition-shadow duration-100 swiper-button-prev flex items-center justify-center cursor-pointer">
+          <button className="bg-white rounded-full h-10 w-10 md:w-12 md:h-12 shadow-sm md:hover:shadow-md transition-shadow duration-100 swiper-button-prev flex items-center justify-center cursor-pointer">
             <FaCaretLeft className="md:text-xl" />
           </button>
-          <button className="bg-white rounded-full h-10 w-10 md:w-14 md:h-14 shadow-sm md:hover:shadow-md transition-shadow duration-100 swiper-button-next flex items-center justify-center cursor-pointer">
+          <button className="bg-white rounded-full h-10 w-10 md:w-12 md:h-12 shadow-sm md:hover:shadow-md transition-shadow duration-100 swiper-button-next flex items-center justify-center cursor-pointer">
             <FaCaretRight className="md:text-xl" />
           </button>
         </div>

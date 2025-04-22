@@ -10,7 +10,7 @@ import Men from "../pages/Men";
 import Women from "../pages/Women";
 import NewArrivals from "../pages/NewArrivals";
 import Product from "../pages/Product";
-import Login from "../pages/Login";
+import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import NotFound from "../pages/NotFound";
 import MyAccount from "../pages/MyAccount";
@@ -30,9 +30,9 @@ export default function Approutes() {
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
+        <Route path="login" element={<Signin />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
-        <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
       </Route>
 

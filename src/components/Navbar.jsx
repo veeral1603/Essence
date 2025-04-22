@@ -4,7 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LuSearch, LuStar, LuUserRound } from "react-icons/lu";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
@@ -18,6 +18,8 @@ export default function Navbar() {
   const toggleIsMobileMenuOpen = useUiStore(
     (state) => state.toggleIsMobileMenuOpen
   );
+
+  const navigate = useNavigate();
 
   return (
     <nav className="w-full py-3 md:py-6 lg:py-10 border-b  border-primaryBorder lg:border-0">
@@ -51,7 +53,10 @@ export default function Navbar() {
           />
           <LuStar className="text-xl md:text-base lg:text-xl hidden md:block font-bold cursor-pointer" />
 
-          <LuUserRound className="text-xl md:text-base lg:text-xl hidden md:block cursor-pointer" />
+          <LuUserRound
+            onClick={() => navigate(`my-account`)}
+            className="text-xl md:text-base lg:text-xl hidden md:block cursor-pointer"
+          />
         </div>
 
         <MobileMenu />
