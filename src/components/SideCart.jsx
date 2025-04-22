@@ -217,15 +217,15 @@ export default function SideCart() {
         </div>
 
         <div className="flex-1 flex flex-col  overflow-y-auto scrollbar pr-2">
-          {cartItems.map((item) => {
+          {cartItems.map((item, i) => {
             {
-              return <SideCartItem item={item} />;
+              return <SideCartItem item={item} key={i} />;
             }
           })}
         </div>
 
         <div className="summary pt-2 ">
-          <div className="flex items-center justify-between border-t border-primaryBorder pt-2">
+          <div className="flex items-center justify-between border-t border-primaryBorder pt-4">
             <h2 className="text-sm md:text-base xl:text-lg font-semibold">
               Subtotal:
             </h2>

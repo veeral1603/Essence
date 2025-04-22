@@ -20,7 +20,7 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="w-full py-3 md:py-10 border-b border-primaryBorder lg:border-0">
+    <nav className="w-full py-3 md:py-6 lg:py-10 border-b  border-primaryBorder lg:border-0">
       <div className="container flex items-center justify-between ">
         <div className="font-volkhov font-semibold text-3xl md:text-4xl flex items-center gap-6">
           <NavLink to={"/"}>
@@ -33,7 +33,7 @@ export default function Navbar() {
             {navLinks.map((item) => {
               {
                 return (
-                  <li className="py-1 px-2 font-normal">
+                  <li className="py-1 px-2 font-normal" key={item.label}>
                     <NavLink to={item.path}>{item.label}</NavLink>
                   </li>
                 );
@@ -50,6 +50,7 @@ export default function Navbar() {
             onClick={toggleIsMobileMenuOpen}
           />
           <LuStar className="text-xl md:text-base lg:text-xl hidden md:block font-bold cursor-pointer" />
+
           <LuUserRound className="text-xl md:text-base lg:text-xl hidden md:block cursor-pointer" />
         </div>
 

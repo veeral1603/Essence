@@ -29,7 +29,9 @@ export default function HeroSection() {
             <h2 className="text-base uppercase font-medium hidden md:block">
               New Collection
             </h2>
-            <Button onClick={() => navigate(`/shop`)}>SHOP NOW</Button>
+            <Button onClick={() => navigate(`/shop`)} classname={"md:mt-3"}>
+              SHOP NOW
+            </Button>
           </div>
         </div>
         <div className=" row-span-1 rounded-lg hidden md:flex  flex-col justify-end">

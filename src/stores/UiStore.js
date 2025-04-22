@@ -1,6 +1,8 @@
 import { create } from "zustand";
 
 const UiStore = (set) => ({
+  currency: "$",
+
   isMobileMenuOpen: false,
   isSideCartOpen: false,
 
@@ -12,7 +14,7 @@ const UiStore = (set) => ({
   toggleIsSideCartOpen: () =>
     set((state) => ({ isSideCartOpen: !state.isSideCartOpen })),
 
-  setIsSideCartOpen: (bool) => set((state) => ({ isSideCartOpen: bool })),
+  setIsSideCartOpen: (bool) => set(() => ({ isSideCartOpen: bool })),
 });
 
 const useUiStore = create(UiStore);

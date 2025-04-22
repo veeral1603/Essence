@@ -121,7 +121,11 @@ export default function MobileMenu() {
           {mobileMenuLinks.map((link) => {
             {
               return (
-                <MobileMenuIcons label={link.label} path={link.path}>
+                <MobileMenuIcons
+                  label={link.label}
+                  path={link.path}
+                  key={link.label}
+                >
                   {link.icon}
                 </MobileMenuIcons>
               );
@@ -135,7 +139,11 @@ export default function MobileMenu() {
           {myAccountLinks.map((link) => {
             {
               return (
-                <MobileMenuIcons label={link.label} path={link.path}>
+                <MobileMenuIcons
+                  label={link.label}
+                  path={link.path}
+                  key={link.label}
+                >
                   {link.icon}
                 </MobileMenuIcons>
               );
@@ -149,7 +157,11 @@ export default function MobileMenu() {
           {contactLinks.map((link) => {
             {
               return (
-                <MobileMenuIcons label={link.label} path={link.path}>
+                <MobileMenuIcons
+                  label={link.label}
+                  path={link.path}
+                  key={link.label}
+                >
                   {link.icon}
                 </MobileMenuIcons>
               );

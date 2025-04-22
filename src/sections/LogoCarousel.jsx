@@ -17,7 +17,7 @@ const brandLogos = [
 export default function LogoCarousel() {
   return (
     <>
-      <section className="hidden md:block container md:py-[30px] lg:py-[50px] ">
+      <section className="hidden md:block container md:py-[30px] lg:py-[60px] ">
         <div className="flex items-center justify-between">
           {brandLogos.map((item) => {
             {
@@ -26,6 +26,7 @@ export default function LogoCarousel() {
                   src={item.logo}
                   className="w-[100px] lg:w-[130px] xl:w-[150px]"
                   alt={item.altText}
+                  key={item.altText}
                 />
               );
             }
@@ -35,10 +36,10 @@ export default function LogoCarousel() {
 
       <section className="md:hidden pt-4 pb-10">
         <Slider width="125px" duration={20} pauseOnHover={false}>
-          {brandLogos.map((item) => {
+          {brandLogos.map((item, i) => {
             {
               return (
-                <Slider.Slide>
+                <Slider.Slide key={i}>
                   <img
                     src={item.logo}
                     className="w-[100px]"

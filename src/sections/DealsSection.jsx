@@ -4,8 +4,8 @@ import Timer from "../components/Timer";
 
 export default function DealsSection() {
   return (
-    <section className="w-full py-8 md:py-12 lg:py-20 bg-stone-100 ">
-      <div className="container flex flex-col md:flex-row w-full gap-8 md:gap-2 items-stretch overflow-x-visible">
+    <section className="w-full py-8 md:py-12 lg:py-20 xl:py-[90px] bg-stone-100 ">
+      <div className="container flex flex-col md:flex-row w-full gap-6 md:gap-3 overflow-x-visible">
         <div className="md:w-1/3 flex flex-col items-center md:items-start h-full">
           <div className="space-y-2 md:space-y-4 lg:space-y-6 mb-6 md:mb-6 lg:mb-8 text-center md:text-left">
             <h2 className="font-volkhov text-2xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold">

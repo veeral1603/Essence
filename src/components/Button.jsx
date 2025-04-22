@@ -1,8 +1,15 @@
-export default function Button({ children, classname, onClick }) {
+export default function Button({
+  children,
+  classname,
+  onClick,
+  type = "primary",
+}) {
   return (
     <button
       onClick={onClick}
-      className={`drop-shadow-xl  bg-black text-stone-100 text-xs   px-10 py-3 sm:px-10 md:py-2 md:px-8 lg:py-3 lg:px-12 rounded-lg mt-2 ${classname}`}
+      className={`drop-shadow-xl  ${
+        type == "secondary" ? "bg-neutral-100" : "bg-black text-stone-100"
+      }   text-center text-sm py-3 px-4 rounded-md whitespace-nowrap shrink-0 min-w-[140px] ${classname}`}
     >
       {children}
     </button>
