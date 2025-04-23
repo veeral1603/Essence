@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
 export default function MyAccount() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation(); //
 
   const currentPath = location.pathname;
