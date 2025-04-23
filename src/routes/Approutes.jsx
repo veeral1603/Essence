@@ -10,10 +10,11 @@ import Men from "../pages/Men";
 import Women from "../pages/Women";
 import NewArrivals from "../pages/NewArrivals";
 import Product from "../pages/Product";
-import Signin from "../pages/Signin";
-import Signup from "../pages/Signup";
 import NotFound from "../pages/NotFound";
 import MyAccount from "../pages/MyAccount";
+import SignUp from "../pages/SignUp";
+import LogIn from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
 
 export default function Approutes() {
   return (
@@ -26,14 +27,16 @@ export default function Approutes() {
         <Route path="women" element={<Women />} />
         <Route path="new-arrivals" element={<NewArrivals />} />
         <Route path="product/:id" element={<Product />} />
+
         <Route path="my-account" element={<MyAccount />} />
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
-        <Route path="login" element={<Signin />} />
+        <Route path="login" element={<LogIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
-        <Route path="signup" element={<Signup />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
