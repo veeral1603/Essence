@@ -8,7 +8,7 @@ export default function Heading({ children, className, sub }) {
         <p className=" text-xs md:text-sm text-secondaryText">
           {sub
             ? sub
-            : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem culpaillum libero officia nam voluptate voluptatibus nulla Lorem "}
+            : " ipsum dolor sitLorem amet consectetur, adipisicing elit. Rem culpaillum libero officia nam voluptate voluptatibus nulla Lorem "}
         </p>
       </div>
     </div>

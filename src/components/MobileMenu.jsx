@@ -17,9 +17,11 @@ import { useEffect } from "react";
 import { VscFeedback } from "react-icons/vsc";
 import { RxQuestionMark } from "react-icons/rx";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { BsShop } from "react-icons/bs";
 
 const mobileMenuLinks = [
   { label: "Home", path: "/", icon: <IoHomeOutline /> },
+  { label: "Shop", path: "/shop", icon: <BsShop /> },
   { label: "Men", path: "/men", icon: <IoIosMale /> },
   { label: "Women", path: "/women", icon: <IoIosFemale /> },
   { label: "Latest", path: "/new-arrivals", icon: <AiOutlineFire /> },

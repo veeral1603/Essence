@@ -22,7 +22,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full py-3 md:py-6 lg:py-10 border-b  border-primaryBorder lg:border-0">
+    <nav className="w-full py-3 md:py-6   border-b  border-primaryBorder ">
       <div className="container flex items-center justify-between ">
         <div className="font-volkhov font-semibold text-3xl md:text-4xl flex items-center gap-6">
           <NavLink to={"/"}>

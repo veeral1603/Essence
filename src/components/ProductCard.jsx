@@ -3,7 +3,7 @@ import useUiStore from "../stores/UiStore";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, rating = true }) {
   const { currency } = useUiStore();
 
   const [isFav, setIsFav] = useState(false);
@@ -39,20 +39,22 @@ export default function ProductCard({ product }) {
             {currency}
             {product.price}
           </p>
-          <div className="flex items-center text-xs md:text-sm text-yellow-500 ">
-            <IoStar />
-            <IoStar />
-            <IoStar />
-            <IoStar />
-            <IoStarHalf />
-          </div>
+          {rating && (
+            <div className="flex items-center text-xs md:text-sm text-yellow-500 ">
+              <IoStar />
+              <IoStar />
+              <IoStar />
+              <IoStar />
+              <IoStarHalf />
+            </div>
+          )}
         </div>
 
-        <h2 className="font-medium  text-sm/4 md:text-base/5 truncate mt-1 md:mt-0">
+        <h2 className="font-medium  text-sm/4 md:text-sm/5 truncate mt-1 md:mt-0">
           {product.title}
         </h2>
 
-        <p className="text-xs md:text-sm text-gray-400 truncate">
+        <p className="text-xs md:text-xs text-gray-400 truncate">
           {product.brand ? `Brand: ${product.brand}` : "Brand: Unknown"}
         </p>
       </div>

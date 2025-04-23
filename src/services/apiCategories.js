@@ -4,7 +4,7 @@ export async function getProductsByCategory(category) {
   try {
     const response = await fetch(`${BASE_URL}/${category}`);
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("Network response was not OK");
     }
     const data = await response.json();
     return data;

@@ -19,7 +19,7 @@ export default function NewArrivalsSection() {
   };
 
   const { data, isPending, error } = useQuery({
-    queryKey: ["products", currentTab],
+    queryKey: ["newProducts", currentTab],
     queryFn: () => getProductsByCategory(tabConfig[currentTab]),
     enabled: !!currentTab,
     keepPreviousData: false,
