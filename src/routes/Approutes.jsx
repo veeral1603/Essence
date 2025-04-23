@@ -13,7 +13,7 @@ import Product from "../pages/Product";
 import NotFound from "../pages/NotFound";
 import MyAccount from "../pages/MyAccount";
 import SignUp from "../pages/SignUp";
-import LogIn from "../pages/Login";
+import LogIn from "../pages/LogIn";
 import ForgotPassword from "../pages/ForgotPassword";
 
 export default function Approutes() {
