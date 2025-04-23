@@ -13,7 +13,7 @@ import Product from "../pages/Product";
 import NotFound from "../pages/NotFound";
 import MyAccount from "../pages/MyAccount";
 import SignUp from "../pages/SignUp";
-
+import LogIn from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 
 export default function Approutes() {
@@ -32,6 +32,7 @@ export default function Approutes() {
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
+        <Route path="login" element={<LogIn />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="cart" element={<Cart />} />
