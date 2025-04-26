@@ -85,7 +85,7 @@ export default function MobileMenu() {
       <div
         className={`${
           isMobileMenuOpen ? `block left-0` : ` -left-full`
-        } absolute top-0 bottom-0  w-[80%] bg-[white] border-r border-primaryBorder md:hidden z-[100] shadow-lg transition-all duration-200 overflow-y-auto `}
+        } fixed top-0 bottom-0  w-[80%] bg-[white] border-r border-primaryBorder md:hidden z-[100] shadow-lg transition-all duration-200 overflow-y-auto `}
       >
         <div className="flex items-center justify-between w-full px-4 sm:px-6 py-3 border-b border-primaryBorder ">
           <NavLink to={"/"}>

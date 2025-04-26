@@ -7,8 +7,8 @@ export default function MainLayout() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-1 w-full h-full ">
+      <div className="flex flex-col h-screen">
+        <main className="flex-grow w-full  ">
           <Outlet />
           <SideCart />
         </main>

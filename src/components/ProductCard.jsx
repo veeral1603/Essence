@@ -1,16 +1,20 @@
 import { useState } from "react";
 import useUiStore from "../stores/UiStore";
 import { GoHeart, GoHeartFill } from "react-icons/go";
-import { IoStar, IoStarHalf, IoStarOutline } from "react-icons/io5";
+import { IoStar, IoStarHalf } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard({ product, rating = true }) {
   const { currency } = useUiStore();
 
   const [isFav, setIsFav] = useState(false);
 
+  const navigate = useNavigate();
+
   return (
     <div
-      className={`group border border-neutral-200 shadow-sm md:hover:shadow-lg transition-shadow duration-150 overflow-hidden rounded-lg cursor-pointer animate-fade-in-up relative`}
+      className={`group border border-neutral-200 shadow-sm md:hover:shadow-md  transition-shadow duration-150 overflow-hidden rounded-lg cursor-pointer animate-fade-in-up relative`}
+      onClick={() => navigate(`/product/${product.id}`)}
     >
       <div className="w-full aspect-square flex items-center justify-center bg-gradient-to-tr from-stone-50 to-stone-200 overflow-hidden relative">
         <img
@@ -19,7 +23,10 @@ export default function ProductCard({ product, rating = true }) {
           }`}
           loading="lazy"
         />
-        <div className="absolute top-4 right-4 z-10">
+        <div
+          className="absolute top-3 right-3 z-10"
+          onClick={(e) => e.stopPropagation()}
+        >
           {isFav ? (
             <GoHeartFill
               className="text-2xl text-pink-600"

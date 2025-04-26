@@ -5,6 +5,7 @@ const UiStore = (set) => ({
 
   isMobileMenuOpen: false,
   isSideCartOpen: false,
+  isMobileFiltersOpen: false,
 
   toggleIsMobileMenuOpen: () =>
     set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
@@ -15,6 +16,11 @@ const UiStore = (set) => ({
     set((state) => ({ isSideCartOpen: !state.isSideCartOpen })),
 
   setIsSideCartOpen: (bool) => set(() => ({ isSideCartOpen: bool })),
+
+  toggleIsMobileFiltersOpen: () =>
+    set((state) => ({ isMobileFiltersOpen: !state.isMobileFiltersOpen })),
+
+  setIsMobileFiltersOpen: (bool) => set(() => ({ isMobileFiltersOpen: bool })),
 });
 
 const useUiStore = create(UiStore);

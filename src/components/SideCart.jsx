@@ -153,12 +153,14 @@ export default function SideCart() {
     isSideCartOpen,
     toggleIsSideCartOpen,
     setIsSideCartOpen,
+    isMobileFiltersOpen,
   ] = useUiStore(
     useShallow((state) => [
       state.isMobileMenuOpen,
       state.isSideCartOpen,
       state.toggleIsSideCartOpen,
       state.setIsSideCartOpen,
+      state.isMobileFiltersOpen,
     ])
   );
 
@@ -251,7 +253,7 @@ export default function SideCart() {
         </div>
       </div>
 
-      {!isMobileMenuOpen && (
+      {!isMobileMenuOpen && !isMobileFiltersOpen && (
         <div
           className={`fixed bottom-5 right-7 sm:bottom-6  md:bottom-7 lg:bottom-10  bg-black rounded-xl text-stone-100 shadow-lg flex items-center justify-center p-3 md:p-4 cursor-pointer z-[110] ${
             isSideCartOpen

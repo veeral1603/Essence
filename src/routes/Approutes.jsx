@@ -26,9 +26,10 @@ export default function Approutes() {
         <Route path="men" element={<Men />} />
         <Route path="women" element={<Women />} />
         <Route path="new-arrivals" element={<NewArrivals />} />
-        <Route path="product/:id" element={<Product />} />
+        <Route path="product/:productID" element={<Product />} />
 
         <Route path="my-account" element={<MyAccount />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
 
       <Route path="/" element={<AuthLayout />}>
@@ -38,8 +39,6 @@ export default function Approutes() {
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
-
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
