@@ -11,7 +11,6 @@ const navLinks = [
   { label: "Men", path: "/men" },
   { label: "Women", path: "/women" },
   { label: "Shop", path: "/shop" },
-  { label: "New Arrivals", path: "/new-arrivals" },
 ];
 
 export default function Navbar() {
@@ -51,7 +50,10 @@ export default function Navbar() {
             className="md:hidden cursor-pointer"
             onClick={toggleIsMobileMenuOpen}
           />
-          <LuStar className="text-xl md:text-base lg:text-xl hidden md:block font-bold cursor-pointer" />
+          <LuStar
+            className="text-xl md:text-base lg:text-xl hidden md:block font-bold cursor-pointer"
+            onClick={() => navigate(`/favorites`)}
+          />
 
           <LuUserRound
             onClick={() => navigate(`my-account`)}

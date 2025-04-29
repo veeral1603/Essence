@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getProduct } from "../services/apiProducts";
 import { LuShoppingCart, LuStar } from "react-icons/lu";
-import useUiStore from "../stores/UiStore";
+
 import { FaRegEye } from "react-icons/fa";
 
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 import TrustSection from "../sections/TrustSection";
 import NewsletterSection from "../sections/NewsletterSection";
 
-import Loader from "../components/Loader";
+import useUiStore from "../stores/UiStore";
+import useFavoritesStore from "../stores/FavoritesStore.js";
 import useCartStore from "../stores/CartStore";
+import { toast } from "react-toastify";
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
 const sizesShoe = ["UK6", "UK7", "UK8", "UK9", "UK10"];
@@ -36,9 +39,10 @@ export default function Product() {
   const [quantity, setQuantity] = useState(1);
 
   const [currentProduct, setCurrentProduct] = useState({});
-
   const { currency, setIsSideCartOpen } = useUiStore();
   const { addProduct, cart } = useCartStore();
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
 
   const { data, isLoading } = useQuery({
     queryKey: ["product", productID],
@@ -91,6 +95,17 @@ export default function Product() {
     resetOptions();
     addProduct(productObj);
   };
+
+  const addFavorites = () => {
+    addToFavorites(currentProduct);
+    toast.success("Added to Favorites");
+  };
+
+  const removeFavorite = () => {
+    removeFromFavorites(currentProduct.id);
+    toast.success("Removed from Favorites");
+  };
+
   if (currentProduct.id) {
     var isClothing = ["mens-shirts", "womens-dresses", "tops"].includes(
       currentProduct?.category
@@ -157,9 +172,30 @@ export default function Product() {
                     <h2>{currentProduct?.title}</h2>
 
                     <button
-                      className={`text-lg/5 p-2 border  border-primaryBorder rounded-full`}
+                      className={`text-lg/5 p-2 border  border-primaryBorder rounded-full ${
+                        favorites.some(
+                          (product) => product.id === currentProduct.id
+                        )
+                          ? `bg-black`
+                          : ""
+                      }`}
+                      onClick={
+                        favorites.some(
+                          (product) => product.id === currentProduct.id
+                        )
+                          ? removeFavorite
+                          : addFavorites
+                      }
                     >
-                      <LuStar className={``} />
+                      <LuStar
+                        className={`${
+                          favorites.some(
+                            (product) => product.id === currentProduct.id
+                          )
+                            ? `text-stone-100`
+                            : ""
+                        }`}
+                      />
                     </button>
                   </div>
                   <div className="my-2 lg:my-4 font-volkhov flex items-center gap-3 ">

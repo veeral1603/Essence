@@ -1,13 +1,25 @@
 import { useState } from "react";
 import useUiStore from "../stores/UiStore";
-import { GoHeart, GoHeartFill } from "react-icons/go";
 import { IoStar, IoStarHalf } from "react-icons/io5";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useFavoritesStore from "../stores/FavoritesStore";
+import { toast } from "react-toastify";
 
 export default function ProductCard({ product, rating = true }) {
   const { currency } = useUiStore();
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
 
-  const [isFav, setIsFav] = useState(false);
+  const addFavorites = () => {
+    addToFavorites(product);
+    toast.success("Added to Favorites");
+  };
+
+  const removeFavorite = () => {
+    removeFromFavorites(product.id);
+    toast.success("Removed from Favorites");
+  };
 
   const navigate = useNavigate();
 
@@ -27,15 +39,12 @@ export default function ProductCard({ product, rating = true }) {
           className="absolute top-3 right-3 z-10"
           onClick={(e) => e.stopPropagation()}
         >
-          {isFav ? (
-            <GoHeartFill
-              className="text-2xl text-pink-600"
-              onClick={() => setIsFav((current) => !current)}
-            />
+          {favorites.some((prod) => prod.id === product.id) ? (
+            <FaStar className="text-2xl text-black" onClick={removeFavorite} />
           ) : (
-            <GoHeart
-              className="text-2xl md:hover:text-pink-600 transition-colors duration-100"
-              onClick={() => setIsFav((current) => !current)}
+            <FaRegStar
+              className="text-2xl md:hover:text-black transition-colors duration-100"
+              onClick={addFavorites}
             />
           )}
         </div>

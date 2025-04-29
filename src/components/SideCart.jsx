@@ -154,9 +154,11 @@ export default function SideCart() {
           onClick={toggleIsSideCartOpen}
         >
           <LuShoppingCart className="text-2xl" />
-          <div className="absolute bg-red-600  w-6 h-6 rounded-full -top-2 -right-2 flex items-center justify-center text-sm">
-            {cart?.length}
-          </div>
+          {cart?.length > 0 && (
+            <div className="absolute bg-red-600  w-6 h-6 rounded-full -top-2 -right-2 flex items-center justify-center text-sm">
+              {cart?.length}
+            </div>
+          )}
         </div>
       )}
     </>

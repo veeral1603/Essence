@@ -24,7 +24,6 @@ const mobileMenuLinks = [
   { label: "Shop", path: "/shop", icon: <BsShop /> },
   { label: "Men", path: "/men", icon: <IoIosMale /> },
   { label: "Women", path: "/women", icon: <IoIosFemale /> },
-  { label: "Latest", path: "/new-arrivals", icon: <AiOutlineFire /> },
   { label: "Favorites", path: "/favorites", icon: <IoIosStarOutline /> },
   { label: "Cart", path: "/cart", icon: <IoCartOutline /> },
 ];
