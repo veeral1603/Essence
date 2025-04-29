@@ -12,8 +12,10 @@ import TrustSection from "../sections/TrustSection";
 import NewsletterSection from "../sections/NewsletterSection";
 
 import Loader from "../components/Loader";
+import useCartStore from "../stores/CartStore";
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
+const sizesShoe = ["UK6", "UK7", "UK8", "UK9", "UK10"];
 const colors = [
   { value: "Black", swatch: "bg-stone-900" },
   { value: "White", swatch: "bg-stone-100" },
@@ -29,12 +31,14 @@ export default function Product() {
   const [viewerCount] = useState(() => Math.floor(Math.random() * 30) + 1);
 
   const [size, setSize] = useState(null);
+  const [shoeSize, setShoeSize] = useState(null);
   const [color, setColor] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
   const [currentProduct, setCurrentProduct] = useState({});
 
-  const { currency } = useUiStore();
+  const { currency, setIsSideCartOpen } = useUiStore();
+  const { addProduct, cart } = useCartStore();
 
   const { data, isLoading } = useQuery({
     queryKey: ["product", productID],
@@ -46,6 +50,13 @@ export default function Product() {
       setCurrentProduct(data);
     }
   }, [data, setCurrentProduct]);
+
+  useEffect(() => {
+    if (currentProduct?.images?.length > 0) {
+      // Set the first image when the product is loaded
+      setCurrentImage(currentProduct.images[0]);
+    }
+  }, [currentProduct]);
 
   const increaseQuantity = () => {
     setQuantity((cur) => cur + 1);
@@ -61,12 +72,33 @@ export default function Product() {
     setSize(null);
   };
 
-  useEffect(() => {
-    if (currentProduct?.images?.length > 0) {
-      // Set the first image when the product is loaded
-      setCurrentImage(currentProduct.images[0]);
-    }
-  }, [currentProduct]);
+  const addToCart = () => {
+    const discountPrice = (
+      currentProduct.price -
+      (currentProduct.discountPercentage * currentProduct.price) / 100
+    ).toFixed(2);
+
+    const productObj = {
+      ...currentProduct,
+      quantity,
+      color,
+      size: size ? size : shoeSize,
+      discountPrice,
+      cartItemId: cart.length + 1,
+    };
+
+    setIsSideCartOpen(true);
+    resetOptions();
+    addProduct(productObj);
+  };
+  if (currentProduct.id) {
+    var isClothing = ["mens-shirts", "womens-dresses", "tops"].includes(
+      currentProduct?.category
+    );
+    var isFootwear = ["mens-shoes", "womens-shoes"].includes(
+      currentProduct?.category
+    );
+  }
   return (
     <>
       {isLoading ? (
@@ -156,11 +188,11 @@ export default function Product() {
                       {viewerCount} People are viewing this right now
                     </p>
                   </div>
-                  <div className="my-3 lg:my-5 px-3 py-2 flex items-center justify-between bg-red-100 border border-red-300 rounded-sm text-sm lg:text-base">
-                    <div className="font-volkhov text-red-400 font-semibold">
+                  <div className="my-3 lg:my-5 px-3 py-2 flex items-center justify-between bg-gray-200 border border-black rounded-sm text-sm lg:text-base">
+                    <div className="font-volkhov text-black font-semibold">
                       <h2>Hurry Up! Sale ends in:</h2>
                     </div>
-                    <div className="font-volkhov text-red-400 font-semibold flex items-center ">
+                    <div className="font-volkhov text-black font-semibold flex items-center ">
                       <span>00</span>
                       <span className="mx-2 lg:mx-3">:</span>
                       <span>05</span>
@@ -183,49 +215,79 @@ export default function Product() {
                   {/* Product Options  */}
                   <div className="flex flex-col my-5 gap-4">
                     {/* Size Options  */}
-                    <div className="flex flex-col">
-                      <h2 className=" font-semibold text-sm font-volkhov">
-                        Size:
-                      </h2>
-                      <div className="flex gap-4 md:gap-4 mt-2">
-                        {sizes.map((item, i) => (
-                          <button
-                            className={`ring-1 ring-offset-[3px] -sm flex items-center justify-center w-[40px] md:w-[45px] aspect-square text-sm rounded-sm md:font-medium hover:bg-black hover:text-stone-100  transition ${
-                              item == size
-                                ? `bg-black text-stone-100 ring-black`
-                                : `bg-stone-100 ring-transparent rounded`
-                            }`}
-                            value={item}
-                            key={i}
-                            onClick={() => setSize(item)}
-                          >
-                            {item}
-                          </button>
-                        ))}
+                    {isClothing && (
+                      <div className="flex flex-col">
+                        <h2 className=" font-semibold text-sm font-volkhov">
+                          Size:
+                        </h2>
+                        <div className="flex gap-4 md:gap-4 mt-2">
+                          {sizes.map((item, i) => (
+                            <button
+                              className={`ring-1 ring-offset-[3px] -sm flex items-center justify-center w-[40px] md:w-[45px] aspect-square text-sm rounded-sm md:font-medium hover:bg-black hover:text-stone-100  transition ${
+                                item == size
+                                  ? `bg-black text-stone-100 ring-black`
+                                  : `bg-stone-100 ring-transparent rounded`
+                              }`}
+                              value={item}
+                              key={i}
+                              onClick={() => setSize(item)}
+                            >
+                              {item}
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
+
+                    {/* Shoe Size Options  */}
+
+                    {isFootwear && (
+                      <div className="flex flex-col">
+                        <h2 className=" font-semibold text-sm font-volkhov">
+                          Size:
+                        </h2>
+                        <div className="flex gap-4 md:gap-4 mt-2">
+                          {sizesShoe.map((item, i) => (
+                            <button
+                              className={`ring-1 ring-offset-[3px] -sm flex items-center justify-center w-[40px] md:w-[45px] aspect-square text-sm rounded-sm md:font-medium hover:bg-black hover:text-stone-100  transition ${
+                                item == shoeSize
+                                  ? `bg-black text-stone-100 ring-black`
+                                  : `bg-stone-100 ring-transparent rounded`
+                              }`}
+                              value={item}
+                              key={i}
+                              onClick={() => setShoeSize(item)}
+                            >
+                              {item}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Color Options  */}
-                    <div className="flex flex-col">
-                      <h2 className=" font-semibold text-sm font-volkhov">
-                        Color:
-                      </h2>
-                      <div className="flex gap-4 md:gap-4 mt-2">
-                        {colors.map((item, i) => (
-                          <button
-                            className={`ring-1 
+                    {isClothing && (
+                      <div className="flex flex-col">
+                        <h2 className=" font-semibold text-sm font-volkhov">
+                          Color:
+                        </h2>
+                        <div className="flex gap-4 md:gap-4 mt-2">
+                          {colors.map((item, i) => (
+                            <button
+                              className={`ring-1 
                               ring-offset-[3px] ring-offset-white rounded-sm flex items-center justify-center w-[40px] md:w-[45px] aspect-square text-sm  md:font-medium hover:ring-black transition ${
                                 item.value == color
                                   ? "ring-black"
                                   : "ring-transparent"
                               } ${item.swatch}`}
-                            value={item.value}
-                            key={i}
-                            onClick={() => setColor(item.value)}
-                          ></button>
-                        ))}
+                              value={item.value}
+                              key={i}
+                              onClick={() => setColor(item.value)}
+                            ></button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Quantity Options  */}
                     <div className="flex flex-col">
@@ -259,10 +321,15 @@ export default function Product() {
                   </div>
 
                   <Button
-                    disabled={!(quantity && color && size)}
+                    disabled={
+                      (isClothing && !(quantity && color && size)) ||
+                      (isFootwear && !(quantity && shoeSize))
+                    }
                     classname={` flex items-center justify-center gap-2`}
+                    onClick={addToCart}
                   >
-                    {!(quantity && color && size) ? (
+                    {(isClothing && !(quantity && color && size)) ||
+                    (isFootwear && !(quantity && shoeSize)) ? (
                       <>SELECT OPTIONS</>
                     ) : (
                       <>

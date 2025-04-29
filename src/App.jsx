@@ -3,6 +3,7 @@ import Approutes from "./routes/Approutes";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ScrollToTopRouter from "./components/ScrollToTopRouter";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 24 * 60 * 60 * 1000 } },
@@ -11,8 +12,8 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
+        <ScrollToTopRouter />
         <Approutes />
       </BrowserRouter>
     </QueryClientProvider>
