@@ -8,7 +8,7 @@ import SecondaryHeading from "../components/SecondaryHeading";
 import Sort from "../components/Sort";
 
 export default function Men() {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["allProducts"],
     queryFn: () => getAllProducts(),
   });

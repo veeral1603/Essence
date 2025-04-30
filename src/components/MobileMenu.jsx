@@ -3,12 +3,7 @@ import MobileMenuDivider from "./MobileMenuDivider";
 import profilePlaceholder from "../assets/profilePlaceholder.jpg";
 
 import { NavLink } from "react-router-dom";
-import {
-  AiOutlineFire,
-  AiOutlineTruck,
-  AiOutlineUser,
-  AiOutlineWallet,
-} from "react-icons/ai";
+import { AiOutlineTruck, AiOutlineUser, AiOutlineWallet } from "react-icons/ai";
 import { IoIosFemale, IoIosMale, IoIosStarOutline } from "react-icons/io";
 import { IoCartOutline, IoClose, IoHomeOutline } from "react-icons/io5";
 import useUiStore from "../stores/UiStore";
