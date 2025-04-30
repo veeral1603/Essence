@@ -103,7 +103,7 @@ export default function SideCart() {
                   {cart.reduce(
                     (acc, cur) => acc + cur.discountPrice * cur.quantity,
                     0
-                  )}
+                  ).toFixed(2)}
                 </h2>
               </div>
 
