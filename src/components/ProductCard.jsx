@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useUiStore from "../stores/UiStore";
 import { IoStar, IoStarHalf } from "react-icons/io5";
 import { FaRegStar, FaStar } from "react-icons/fa";

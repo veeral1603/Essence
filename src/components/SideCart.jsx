@@ -95,28 +95,34 @@ export default function SideCart() {
 
             <div className="summary pt-2 ">
               <div className="flex items-center justify-between border-t border-primaryBorder pt-4">
-                <h2 className="text-sm md:text-base xl:text-lg font-semibold">
+                <h2 className="text-sm md:text-base  font-semibold">
                   Subtotal:
                 </h2>
-                <h2 className="text-sm md:text-base xl:text-lg font-semibold">
-                  {currency}{" "}
-                  {cart.reduce(
-                    (acc, cur) => acc + cur.discountPrice * cur.quantity,
-                    0
-                  ).toFixed(2)}
+                <h2 className="text-sm md:text-base  font-semibold">
+                  {currency}
+                  {cart
+                    .reduce(
+                      (acc, cur) => acc + cur.discountPrice * cur.quantity,
+                      0
+                    )
+                    .toFixed(2)}
                 </h2>
               </div>
 
               <div className="flex flex-col mt-4 gap-3">
                 <button
                   className="bg-black text-stone-100 text-sm md:text-base py-3 rounded-lg"
-                  onClick={() => navigate(`/checkout`)}
+                  onClick={() => {
+                    navigate(`/checkout`);
+                    setIsSideCartOpen(false);
+                  }}
                 >
                   Checkout
                 </button>
                 <NavLink
                   to={`/cart`}
-                  className={`text-center text-sm md:text-base underline`}
+                  onClick={() => setIsSideCartOpen(false)}
+                  className={`text-center text-sm  underline`}
                 >
                   View Cart
                 </NavLink>
@@ -146,14 +152,14 @@ export default function SideCart() {
 
       {!isMobileMenuOpen && !isMobileFiltersOpen && (
         <div
-          className={`fixed bottom-5 right-7 sm:bottom-6  md:bottom-7 lg:bottom-10  bg-black rounded-xl text-stone-100 shadow-lg flex items-center justify-center p-3 md:p-4 cursor-pointer z-[110] ${
+          className={`fixed bottom-5 right-7 sm:bottom-6  md:bottom-7 lg:bottom-10  bg-black rounded-xl text-stone-100 shadow-lg flex items-center justify-center p-3 cursor-pointer z-[110] ${
             isSideCartOpen
               ? `sm:right-[53%] md:right-[53%] lg:right-[43%] xl:right-[37%] 2xl:right-[27%]`
               : `sm:right-6 md:right-7 lg:right-10`
           } transiton-all duration-200`}
           onClick={toggleIsSideCartOpen}
         >
-          <LuShoppingCart className="text-2xl" />
+          <LuShoppingCart className="text-xl md:text-2xl" />
           {cart?.length > 0 && (
             <div className="absolute bg-red-600  w-6 h-6 rounded-full -top-2 -right-2 flex items-center justify-center text-sm">
               {cart?.length}

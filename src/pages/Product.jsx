@@ -16,6 +16,7 @@ import useUiStore from "../stores/UiStore";
 import useFavoritesStore from "../stores/FavoritesStore.js";
 import useCartStore from "../stores/CartStore";
 import { toast } from "react-toastify";
+import QuantityInput from "../components/QuantityInput.jsx";
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
 const sizesShoe = ["UK6", "UK7", "UK8", "UK9", "UK10"];
@@ -330,23 +331,12 @@ export default function Product() {
                       <h2 className=" font-semibold text-sm font-volkhov">
                         Quantity:
                       </h2>
-                      <div className="flex items-stretch w-32 border border-primaryBorder mt-2">
-                        <button
-                          className="flex-1 active:bg-stone-100 md:hover:bg-stone-100 text-xl w-1/3 p-1 transition"
-                          onClick={decreaseQuantity}
-                        >
-                          -
-                        </button>
-                        <div className="flex items-center justify-center  w-1/3 p-1 ">
-                          <p className="font-volkhov">{quantity}</p>
-                        </div>
-                        <button
-                          className="flex-1 active:bg-stone-100 md:hover:bg-stone-100 text-xl w-1/3 p-1 transition"
-                          onClick={increaseQuantity}
-                        >
-                          +
-                        </button>
-                      </div>
+                      <QuantityInput
+                        increaseQuantity={increaseQuantity}
+                        decreaseQuantity={decreaseQuantity}
+                        value={quantity}
+                        className={"mt-2"}
+                      />
                     </div>
 
                     <div className="text-xs  -mt-2 md:-mt-3">

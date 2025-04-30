@@ -32,6 +32,32 @@ const CartStore = (set) => ({
       ),
     })),
 
+  increaseQuantity: (productID) =>
+    set((state) => {
+      const updatedCart = state.cart.map((product) => {
+        if (product.id === productID) {
+          return { ...product, quantity: product.quantity + 1 };
+        }
+
+        return product;
+      });
+
+      return { cart: updatedCart };
+    }),
+
+  decreaseQuantity: (productID) =>
+    set((state) => {
+      const updatedCart = state.cart.map((product) => {
+        if (product.id === productID) {
+          return { ...product, quantity: product.quantity - 1 };
+        }
+
+        return product;
+      });
+
+      return { cart: updatedCart };
+    }),
+
   clearCart: () => set({ cart: [] }),
 });
 
