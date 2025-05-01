@@ -51,7 +51,7 @@ export default function SideCart() {
 
   const navigate = useNavigate();
 
-  const { cart } = useCartStore();
+  const { cart, getSubTotal } = useCartStore();
 
   return (
     <>
@@ -100,12 +100,7 @@ export default function SideCart() {
                 </h2>
                 <h2 className="text-sm md:text-base  font-semibold">
                   {currency}
-                  {cart
-                    .reduce(
-                      (acc, cur) => acc + cur.discountPrice * cur.quantity,
-                      0
-                    )
-                    .toFixed(2)}
+                  {getSubTotal().toFixed(2)}
                 </h2>
               </div>
 

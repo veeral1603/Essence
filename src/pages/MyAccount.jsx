@@ -1,15 +1,15 @@
-import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import useAuthStore from "../stores/AuthStore";
 
 export default function MyAccount() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isAuth } = useAuthStore();
   const location = useLocation(); //
 
   const currentPath = location.pathname;
   const isAuthPage =
     currentPath.endsWith("/login") || currentPath.endsWith("/signup");
 
-  if (!isLoggedIn && !isAuthPage) {
+  if (!isAuth && !isAuthPage) {
     return <Navigate to="/login" replace />;
   }
 

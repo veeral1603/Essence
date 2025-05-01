@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const CartStore = (set) => ({
+const CartStore = (set, get) => ({
   cart: [],
+  shipping: 30,
 
   addProduct: (productObj) =>
     set((state) => {
@@ -57,6 +58,15 @@ const CartStore = (set) => ({
 
       return { cart: updatedCart };
     }),
+
+  getSubTotal: () => {
+    const cart = get().cart;
+    return cart.reduce((acc, cur) => acc + cur.discountPrice * cur.quantity, 0);
+  },
+
+  getTotal: () => {
+    return get().getSubTotal() + get().shipping;
+  },
 
   clearCart: () => set({ cart: [] }),
 });

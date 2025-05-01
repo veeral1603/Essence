@@ -1,10 +1,14 @@
 import { LuTrash } from "react-icons/lu";
 import useUiStore from "../stores/UiStore";
 import useCartStore from "../stores/CartStore";
+import { useNavigate } from "react-router-dom";
 
 export default function SideCartItem({ item }) {
   const { currency } = useUiStore();
   const { removeFromCart } = useCartStore();
+  const { setIsSideCartOpen } = useUiStore();
+
+  const navigate = useNavigate();
 
   return (
     <div className="py-3 flex  border-b border-primaryBorder last:border-none gap-2 animate-fade-in-up">
@@ -13,7 +17,13 @@ export default function SideCartItem({ item }) {
       </div>
       <div className="flex-1 py-1">
         <div className="flex items-start justify-between gap-1 md:gap-2">
-          <h2 className="text-[15px]/5 md:text-lg/6 font-semibold cursor-pointer">
+          <h2
+            className="text-[15px]/5 md:text-lg/6 font-semibold cursor-pointer"
+            onClick={() => {
+              navigate(`/product/${item.id}`);
+              setIsSideCartOpen(false);
+            }}
+          >
             {item.title}
           </h2>
           <div

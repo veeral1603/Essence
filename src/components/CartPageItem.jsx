@@ -2,6 +2,7 @@ import { LuTrash } from "react-icons/lu";
 import useCartStore from "../stores/CartStore";
 import useUiStore from "../stores/UiStore";
 import QuantityInput from "./QuantityInput";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPageItem({ product }) {
   const { currency } = useUiStore();
@@ -27,7 +28,7 @@ export default function CartPageItem({ product }) {
             />
           </div>
           <div className="flex-1 flex flex-col">
-            <div className="text-sm md:text-base/5 font-medium">
+            <div className="text-sm md:text-base/5 font-medium cursor-pointer">
               <h2>{product.title}</h2>
             </div>
             <div className="text-neutral-500 text-xs md:text-sm mt-1">
