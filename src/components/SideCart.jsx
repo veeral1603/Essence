@@ -100,16 +100,7 @@ export default function SideCart() {
                 </h2>
                 <h2 className="text-sm md:text-base  font-semibold">
                   {currency}
-<<<<<<< HEAD
                   {getSubTotal().toFixed(2)}
-=======
-                  {cart
-                    .reduce(
-                      (acc, cur) => acc + cur.discountPrice * cur.quantity,
-                      0
-                    )
-                    .toFixed(2)}
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
                 </h2>
               </div>
 

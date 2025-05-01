@@ -11,11 +11,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import securePayments from "../assets/securePayments.png";
 
 export default function Cart() {
-<<<<<<< HEAD
   const { cart, shipping, getTotal, getSubTotal } = useCartStore();
-=======
-  const { cart } = useCartStore();
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
   const { currency } = useUiStore();
 
   const navigate = useNavigate();
@@ -27,24 +23,14 @@ export default function Cart() {
           <SecondaryNavbar />
           <section className=" py-4 md:py-8">
             <div className="max-w-5xl mx-auto px-4 md:px-8 flex flex-col">
-<<<<<<< HEAD
               <div>
                 <SecondaryHeading
                   className={"!text-xl md:!text-2xl !text-left"}
-=======
-              <div className="text-center">
-                <SecondaryHeading
-                  className={"!text-base md:!text-2xl !text-left"}
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
                 >
                   Your Cart
                 </SecondaryHeading>
               </div>
-<<<<<<< HEAD
               <div className="mt-4 md:mt-6 w-full ">
-=======
-              <div className="mt-4 md:mt-6 w-full">
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
                 <table className="w-full table-auto">
                   <thead>
                     <tr className="text-left  border-b border-primaryBorder text-xs md:text-sm  text-neutral-500">
@@ -64,11 +50,7 @@ export default function Cart() {
                   </tbody>
                 </table>
               </div>
-<<<<<<< HEAD
               <div className="flex flex-col md:flex-row mt-4 md:mt-8">
-=======
-              <div className="flex flex-col md:flex-row mt-6 md:mt-4">
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
                 <div className="flex-1  hidden md:block">
                   <div className="text-sm">
                     <p
@@ -80,7 +62,6 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="flex-1 flex flex-col">
-<<<<<<< HEAD
                   <div className="flex flex-col  justify-between text-sm divide-y divide-primaryBorder">
                     <div className="flex items-center justify-between py-2">
                       <h2>Subtotal:</h2>
@@ -105,20 +86,6 @@ export default function Cart() {
                     </div>
                   </div>
 
-=======
-                  <div className="flex items-center justify-between text-base font-semibold">
-                    <h2>Subtotal:</h2>
-                    <h2>
-                      {currency}
-                      {cart
-                        .reduce(
-                          (acc, cur) => acc + cur.discountPrice * cur.quantity,
-                          0
-                        )
-                        .toFixed(2)}
-                    </h2>
-                  </div>
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
                   <div className="w-full mt-2">
                     <Button
                       classname={"w-full"}

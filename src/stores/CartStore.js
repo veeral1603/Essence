@@ -59,7 +59,6 @@ const CartStore = (set, get) => ({
       return { cart: updatedCart };
     }),
 
-<<<<<<< HEAD
   getSubTotal: () => {
     const cart = get().cart;
     return cart.reduce((acc, cur) => acc + cur.discountPrice * cur.quantity, 0);
@@ -69,8 +68,6 @@ const CartStore = (set, get) => ({
     return get().getSubTotal() + get().shipping;
   },
 
-=======
->>>>>>> 20c1e3a9c64c6bd024bdbe5f76b5f75483be2dfd
   clearCart: () => set({ cart: [] }),
 });
 
